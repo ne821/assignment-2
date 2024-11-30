@@ -1,0 +1,48 @@
+<html>
+<head>
+    <title>Button Click Event</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+        }
+        #clickMeButton {
+            padding: 15px 30px;
+            font-size: 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.5s ease; /* Smooth transition */
+        }
+    </style>
+</head>
+<body>
+    <button id="clickMe">Click Me!</button>
+
+    <script>
+        const button = document.getElementById('clickMe');
+
+        button.addEventListener('click', function() {
+            // Display an alert when the button is clicked
+            alert('Button clicked!');
+
+            // Change the button color to a random color
+            const randomColor = getRandomColor();
+            button.style.backgroundColor = randomColor;
+        });
+
+        function getRandomColor() {
+            // Generate a random hex color
+            const letters = '0123456789ABCDEF';
+            let color = '#';
+            for (let i = 0; i < 6; i++) {
+                color += letters[Math.floor(Math.random() * 16)];
+            }
+            return color;
+        }
+    </script>
+</body>
+</html>

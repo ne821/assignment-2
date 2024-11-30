@@ -1,0 +1,87 @@
+<html >
+<head>
+    <title>Manipulating the DOM</title>
+    <style>
+        ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    li {
+      padding: 10px;
+      border-bottom: 1px solid #ccc;
+    }
+
+    li:last-child {
+      border-bottom: none;
+    }
+
+    </style>
+</head>
+<body>
+    <ul id="myList">
+        <li>First item</li>
+        <li>Second item</li>
+        <li>Third item</li>
+    </ul>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const ul = document.getElementById('myList');
+            const newLi = document.createElement('li');
+            newLi.textContent = 'Fourth item';
+            ul.appendChild(newLi);
+
+            ul.addEventListener('click', (event) => {
+                if (event.target.tagName === 'LI') {
+                    event.target.textContent = Math.random().toString(36).substring(2, 15);
+                }
+            });
+        });
+    </script>
+</body>
+</html>
+
+<!------------------->
+<html>
+<head>
+    <title>CSS Box Model</title>
+    <style>
+        #boxModelDiv {
+            width: 200px;
+            height: 200px;
+            padding: 20px;
+            border: 5px solid black;
+            margin: 20px;
+            background-color: #f0f0f0;
+        }
+    </style>
+</head>
+<body>
+    <div id="boxModelDiv">CSS Box Model</div>
+    <script>
+        const boxDiv = document.getElementById('boxModelDiv');
+
+        boxDiv.addEventListener('click', () => {
+            boxDiv.style.backgroundColor = getRandomColor();
+        });
+
+        boxDiv.addEventListener('mouseover', () => {
+            boxDiv.style.borderColor = getRandomColor();
+        });
+
+        boxDiv.addEventListener('mouseout', () => {
+            boxDiv.style.borderColor = 'black';
+        });
+
+        function getRandomColor() {
+            const letters = '0123456789ABCDEF';
+            let color = '#';
+            for (let i = 0; i < 6; i++) {
+                color += letters[Math.floor(Math.random() * 16)];
+            }
+            return color;
+        }
+    </script>
+</body>
+</html>
